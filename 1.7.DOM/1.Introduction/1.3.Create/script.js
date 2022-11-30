@@ -2,7 +2,13 @@
 */
 
 let learners=["Arno Volts" ,"Aurélien Mariaule" ,"Aurore Lemaire" ,"Benjamin Porsont" ,"Céline Verreydt" ,"Corentin Miserque" ,"Dominique Coppée" ,"Edouard de Romrée de Vichenet" ,"Hugo Goorickx ","Jofrey Houyoux" ,"Jonathan Manes" ,"jonathan bajoux" ,"Laura Wilhelmi" ,"Lysie Soyez" ,"Marnie Benalia" ,"Mathilde Cornelis" ,"Milo Bonnet" ,"Nadim El Nakadi" ,"Nathalie Vanden Abeele" ,"Nathalie Goffette" ,"Nour Everaert" ,"Pierre Mauriello" ,"Quentin Bource ","Virginie Dourson"];
+//Code pour mélanger les noms dans le tableau, avant de créer des nouveaux noeuds
+//for (let i = learners.length - 1; i >= 0; i--) {
+//    const j = Math.floor(Math.random() * (i + 1));
+//    [learners[i], learners[j]] = [learners[j], learners[i]];
+//}
 let emplacement = document.querySelector("article");
+
 for (let i=0;i<learners.length;i++){
 
     //Création d'une nouvelle div
@@ -26,9 +32,6 @@ for (let i=0;i<learners.length;i++){
     let M = Math.max(r,g,b);
     let m = Math.min(r,g,b);
     let L = ((M+m)/510)*100;
-    console.log(r + " " + g + " " + b);
-    console.log(L)
-    console.log(nom)
     if (L<60){
         paragr.style.color="rgb(255,255,255)";
     }
@@ -37,4 +40,14 @@ for (let i=0;i<learners.length;i++){
     paragr.appendChild(nom);
     divel.appendChild(paragr);
     emplacement.appendChild(divel);
+}
+
+//code pour mélanger les noeuds de l'arbre
+let liste = document.querySelectorAll("div");
+let array = Array.from(liste);
+let premier = document.querySelector("h2");
+for (let i = (array.length - 1); i >= 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    array[j].parentElement.insertBefore(array[j],premier.nextElementSibling);
+    array.splice(j,1);
 }
