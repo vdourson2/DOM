@@ -5,8 +5,13 @@ let learners=["Arno Volts" ,"Aurélien Mariaule" ,"Aurore Lemaire" ,"Benjamin Po
 let emplacement = document.querySelector("article");
 for (let i=0;i<learners.length;i++){
     let divel = document.createElement("div");
-    divel.style.backgroundColor=
-    let paragr = document.createElement("p")
-
-
+    let r= Math.floor(Math.random() * 256);
+    let g= Math.floor(Math.random() * 256);
+    let b= Math.floor(Math.random() * 256);
+    divel.style.backgroundColor=`rgb(${r},${g},${b})`;
+    let paragr = document.createElement("p");
+    let nom = document.createTextNode(learners[i]);
+    paragr.appendChild(nom);
+    divel.appendChild(paragr);
+    emplacement.appendChild(divel);
 }
